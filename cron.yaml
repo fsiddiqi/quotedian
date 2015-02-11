@@ -1,0 +1,4 @@
+cron:
+- description: quote bot
+  url: /bot
+  schedule: every 8 mins
