@@ -37,10 +37,10 @@ class BotHandler(webapp2.RequestHandler):
             self.tweetQuote(api)
             # Follow back a follower
             ##self.followBackFollower(api)
-        elif freq <= 20: 
+        elif freq <= 30: 
             # Unfollow a non-follower
             self.dropNonFollower(api)
-        elif freq <= 50: 
+        elif freq <= 60: 
             # Add a random follower
             self.addNewFollower(api)
         else:           
@@ -51,19 +51,25 @@ class BotHandler(webapp2.RequestHandler):
         
     def tweet(self, api, theTweet):
         api.update_status(theTweet)
-        
+ 
+    def retweet(self, api, theTweetID):
+        print(theTweetID)
+        api.retweet(id=theTweetID)
+
     def searchRT(self, api, config):
         searchTerms = config.get('Twitter', 'SEARCH_TERMS')
         termsList = searchTerms.split(",")
         term = random.choice(termsList)
         self.response.write(term)
         results = api.search(term, "en")
-        resultsSorted = sorted(results, key=lambda tweet: tweet.retweet_count, reverse=True)
-        if resultsSorted[0]:
-            theTweet = resultsSorted[0].text
+        #resultsSorted = sorted(results, key=lambda tweet: tweet.retweet_count, reverse=True)
+        randTweetNum = random.randint(0, len(results))
+        if results[randTweetNum]:
+            theTweet = results[randTweetNum].text
+            theTweetID = results[randTweetNum].id
             #print(theTweet)
             self.response.write(theTweet)
-            self.tweet(api, theTweet)
+            self.retweet(api, theTweetID)
         
     def tweetQuote(self, api):
         # read csv
@@ -104,6 +110,18 @@ class BotHandler(webapp2.RequestHandler):
                 nonFollower = api.destroy_friendship(nonFollowerID)
             self.response.write(nonFollower)
 
+    def saveFollowers(self, api, config):
+        myID = api.me().id
+        # Get followers
+        followersList = api.followers_ids(myID)
+        # Mongo API keys
+        apiURL = config.get('Mongolab', 'apiURL')
+        apiKey = config.get('Mongolab', 'apiKey')
+        database = config.get('Mongolab', 'database')
+
+        # Set API call headers
+        headers = {'content-type': 'application/json'}
+        
     def followBackFollower(self, api):
         myID = api.me().id
         # Get followers
