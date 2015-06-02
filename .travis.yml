@@ -6,6 +6,7 @@ before_script:
   - unzip -q google_appengine_1.7.4.zip
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
+  - pip install --upgrade pip
   - pip install .
   - pip install -r requirements.txt  -t lib/
 # command to run tests, e.g. python setup.py test
