@@ -9,4 +9,4 @@ install:
   - pip install --upgrade pip
   - pip install -r requirements.txt  -t lib/
 # command to run tests, e.g. python setup.py test
-script:  python main.py
+script:  python bot.py
