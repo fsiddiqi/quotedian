@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/fsiddiqi/quotedian.svg?branch=master)](https://travis-ci.org/fsiddiqi/quotedian)
 
 ## Introduction
-Quotedian is a social media reputation bot for Twitter and Instagam running on Google App Engine
+Quotedian is a social media reputation bot for Twitter and Instagram running on Google App Engine
 
 ## Requirements
 * Python 2.7
