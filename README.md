@@ -1,5 +1,5 @@
 ## Introduction
-Quotedian is a social media reputation bot for Twitter and Instragram running on Google App Engine
+Quotedian is a social media reputation bot for Twitter and Instagram running on Google App Engine
 
 ## Requirements
 * Python 2.7

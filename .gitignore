@@ -6,3 +6,6 @@ settings.cfg
 
 # Dependencies
 lib
+
+#experimental stuff
+*jnk*
