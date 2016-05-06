@@ -11,8 +11,8 @@ Quotedian is a social media reputation bot for Twitter and Instagram running on 
 Run 'pip install -r requirements.txt -t lib/' to install these dependencies  in lib/ subdirectory.
 
 ## Twitter API Instructions
-* Register as a developer with Twitter
-* Create new app and note API keys
+* Register as a developer with Twitter https://dev.twitter.com/
+* Create new app and note API keys https://apps.twitter.com/
 
 ## Config
 Rename sample_settings.cfg to settings.cfg and fill in API keys and other info
